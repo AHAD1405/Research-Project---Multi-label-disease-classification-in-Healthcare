@@ -1,0 +1,18 @@
+paths:
+  raw_events: data/raw/events.parquet         # patient-visit-code table
+  label_vocab_out: data/interim/label_vocab.json
+  sequences_out_dir: data/processed/
+
+time:
+  history_years: 3        # Y-3..Y-1 used as history
+  min_year: 2012
+  max_year: 2022          # target Y will be within (min_year+history_years .. max_year)
+split:
+  train_until: 2018       # temporal split: train ≤ 2018, val=2019-2020, test ≥ 2021
+  val_until: 2020
+labels:
+  min_patients_per_label: 200   # drop very rare labels from vocabulary
+  top_k: null                   # or set e.g. 500 if you want a cap
+icd:
+  map_to_chapter: false         # true → map to ICD chapters (coarser labels)
+  normalize_dotless: true       # unify dot formats (E119 -> E11.9)
