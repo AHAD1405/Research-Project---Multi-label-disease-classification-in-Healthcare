@@ -1,0 +1,22 @@
+""""""""""""  RUN INSTRUCTIONS """"""""""""""""""""""""
+This line should be run as follwing below: 
+    1. Open Command Prompt or PowerShell.
+    2. Navigate to your project folder.
+    3. Run the lines below.
+    
+    NOTE: run each chunk separatily. 
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+python scripts\convert_mimic_to_events.py `
+  --version iii `
+  --diagnoses data\raw\mimiciii\DIAGNOSES_ICD.csv `
+  --admissions data\raw\mimiciii\ADMISSIONS.csv `
+  --out data\interim\events_mimic3.parquet
+
+
+
+python scripts/convert_eicu_to_events.py \
+  --patient data/raw/eicu/patient.csv \
+  --diagnosis data/raw/eicu/diagnosis.csv \
+  --out data/interim/events_eicu.parquet
